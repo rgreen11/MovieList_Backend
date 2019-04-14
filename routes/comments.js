@@ -1,4 +1,4 @@
-const {comments} = require('../services/movies')
+const {comments} = require('../services/comments')
 
 
 const createComment = (req, res)=>{
@@ -17,7 +17,9 @@ const createComment = (req, res)=>{
 }
 
 const readComment = (req, res) => {
-    comments.read()
+  const {id} = req.body
+
+    comments.read(id)
         .then((data)=>{
         res.json(data)
       })
@@ -49,4 +51,4 @@ const removeComment = (req, res) =>{
 }
 
 
-module.exports = { createComment, readComment, updateComment, removeComment}
+module.exports = {createComment, readComment, updateComment, removeComment}

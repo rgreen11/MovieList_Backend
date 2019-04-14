@@ -10,9 +10,9 @@ comments.create = (text, movies_id) => {
     return db.none(sql, {text, movies_id})
 }
 
-comments.read = () => {
-    const sql = `SELECT comments.* FROM comments`;
-    return db.any(sql)
+comments.read = (id) => {
+    const sql = `SELECT * FROM comments WHERE movies_id = $[id]`;
+    return db.any(sql,{id})
     
 }
 
@@ -26,9 +26,6 @@ comments.update = (id,texts, movies_id) => {
     id=$[id]`;
 
     return db.none(sql,{id, texts, movies_id})
-    // this functions needs a place holder for each param
-    // figure out a way to only update one value without having to insert other values
-    // *** what you can do is ask the user if the remaining data is the same with YES / NO. If so call this api and fill in the remaining data. :)
 }
 
 comments.delete = (id) =>{

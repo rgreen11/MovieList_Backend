@@ -39,12 +39,12 @@ CREATE TABLE comments (
 
 
 
-INSERT INTO genre (id, names) VALUES 
-(1, 'Action'),
-(2, 'Fantasy'),
-(3, 'Adventure'),
-(4, 'Horror'),
-(5, 'Comedy');
+INSERT INTO genre (names) VALUES 
+('Action'),
+('Fantasy'),
+('Adventure'),
+('Horror'),
+('Comedy');
 
 INSERT INTO movies (title, genre_id, img_url) VALUES 
 ('Black Panther', 1, 'https://prodimage.images-bn.com/pimages/9781302506964_p0_v1_s550x406.jpg'),

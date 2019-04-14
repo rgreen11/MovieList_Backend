@@ -1,8 +1,8 @@
 const {db} = require('./tablecommand')
-const movielist = {}
+const movies = {}
 
 
-movielist.create = (title, genre_id, img_url) => {
+movies.create = (title, genre_id, img_url) => {
     const sql  = `
     INSERT INTO
     movies (title, genre_id, img_url)
@@ -10,13 +10,16 @@ movielist.create = (title, genre_id, img_url) => {
     return db.none(sql, {title, genre_id, img_url})
 }
 
-movielist.read = () => {
-    const sql = `SELECT movies.* FROM movies`;
+movies.read = () => {
+    const sql = `
+    SELECT movies.*, genre.id as genre_id 
+    FROM movies 
+    LEFT JOIN genre ON movies.genre_id = genre.id`;
     return db.any(sql)
     
 }
 
-movielist.update = (id,title, genre_id, img_url) => {
+movies.update = (id,title, genre_id, img_url) => {
     const sql = `
     UPDATE movies SET
     title=$[title],
@@ -29,9 +32,9 @@ movielist.update = (id,title, genre_id, img_url) => {
     return db.none(sql,{id, title, genre_id, img_url})
 }
 
-movielist.delete = (id) =>{
+movies.delete = (id) =>{
     const sql = `DELETE FROM movies WHERE id=$[id]`;
     return db.none(sql,{id})
 }
 
-module.exports = {movielist}
+module.exports = {movies}

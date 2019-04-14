@@ -25,14 +25,11 @@ genre.update = (id,name) => {
     id=$[id]`;
 
     return db.none(sql,{id, name})
-    // this functions needs a place holder for each param
-    // figure out a way to only update one value without having to insert other values
-    // *** what you can do is ask the user if the remaining data is the same with YES / NO. If so call this api and fill in the remaining data. :)
 }
 
-movielist.delete = (id) =>{
+genre.delete = (id) =>{
     const sql = `DELETE FROM genre WHERE id=$[id]`;
     return db.none(sql,{id})
 }
 
-module.exports = {movielist}
+module.exports = {genre}

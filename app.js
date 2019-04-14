@@ -11,22 +11,22 @@ app.use(bodyParser.json());
 
 
 app.post('/movie/create', createMovies);
-app.get('/movie/search', readMovies);
+app.get('/movies', readMovies);
 app.put('/movie/update', updateMovies);
 app.delete('/movie/delete', removeMovies);
-// listings
+
 app.post('/genre/create',createGenre);
-app.get('/genre/search', readGenre);
+app.get('/movies/byGenre', readGenre);
 app.put('/genre/update', updateGenre);
 app.delete('/genre/delete',removeGenre);
-//buyer
+
 app.post('/rating/create', createRating);
 app.get('/rating/search',  readRating);
 app.put('/rating/update',  updateRating);
 app.delete('/rating/delete',  removeRating);
 
 app.post('/comment/create', createComment);
-app.get('/comment/search',  readComment);
+app.get('/comments/search',  readComment);
 app.put('/comment/update', updateComment);
 app.delete('/comment/delete',  removeComment);
 

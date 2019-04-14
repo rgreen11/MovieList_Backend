@@ -1,4 +1,4 @@
-const {genre} = require('../services/movies')
+const {genre} = require('../services/genre')
 
 
 const createGenre = (req, res)=>{
@@ -22,7 +22,8 @@ const readGenre = (req, res) => {
         res.json(data)
       })
       .catch((error)=>{
-        return error
+        console.log(error)
+        return 'Error'
       })
 }
 
